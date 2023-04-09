@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Main {
+    public static double calculatemiddle(int[] arr, int n) {
+        Scanner scanner = new Scanner(System.in);
+        if (n == 0) {
+            return 0;
+        } else {
+            System.out.print("Enter number " + (arr.length - n + 1) + ": ");
+            int num = scanner.nextInt();
+            arr[arr.length - n] = num;
+            return (num + calculatemiddle(arr, n - 1) * (n - 1)) / n;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Size of array: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        System.out.println("Enter " + n + " elements ");
+        double avg = calculatemiddle(arr, n);
+        System.out.println("Average is: " + avg);
+    }
+}
