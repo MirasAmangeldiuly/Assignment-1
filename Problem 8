@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class Main {
+    public static boolean isalldigits(String s) {
+        return checkalldigits(s, 0);
+    }
+    public static boolean checkalldigits(String s, int index) {
+        if (index == s.length()) {
+            return true;
+        }
+        char c = s.charAt(index);
+        if (!Character.isDigit(c)) {
+            return false;
+        }
+        return checkalldigits(s, index + 1);
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String s = scanner.nextLine();
+        boolean result = isalldigits(s);
+        if (result) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
