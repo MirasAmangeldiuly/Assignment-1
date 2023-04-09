@@ -1,0 +1,23 @@
+import java.util.Scanner;
+public class Main {
+    public static void generate(String str) {
+        int n = str.length();
+        char[] charArray = str.toCharArray();
+        permute(charArray, 0, n - 1);
+    }
+    public static void permute(char[] charArray, int left, int right) {
+        if (left == right) {
+            System.out.println(String.valueOf(charArray));
+        } else {
+            for (int i = left; i <= right; i++) {
+                swap(charArray, left, i);
+                permute(charArray, left + 1, right);
+                swap(charArray, left, i);
+            }
+        }
+    }
+    public static void swap(char[] charArray, int i, int j) {
+        char temp = charArray[i];
+        charArray[i] = charArray[j];
+        charArray[j] = temp;
+    }
